@@ -1,7 +1,6 @@
 import http from 'http';
+import express from 'express';
 import * as core from '@actions/core';
-
-const express = require('express');
 
 const startServer = (port: number = 8080) => {
   const app = express();
