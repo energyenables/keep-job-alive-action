@@ -1,0 +1,16 @@
+name: keep-job-alive-action
+description: 'Make job wait until kill signal received'
+branding:
+  icon: box
+  color: blue
+author: 'energyenables'
+inputs:
+  mode:
+    description: Wait or kill?
+    required: true
+  host:
+    description: Host
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
