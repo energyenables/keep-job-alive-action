@@ -1,3 +1,4 @@
+import axios from 'axios';
 import http from 'http';
 import express from 'express';
 import * as core from '@actions/core';
@@ -18,7 +19,9 @@ const startServer = (port: number) => {
 };
 
 const stopServer = (hostname: string) => {
-  http.request({ hostname, path: '/close/', method: 'POST' });
+  console.log('Sending close signal to wait server...');
+  axios.post(`${hostname}/close/`);
+  console.log('Wait server closed.');
 };
 
 const run = () => {
