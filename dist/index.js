@@ -1980,10 +1980,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const http_1 = __importDefault(__nccwpck_require__(685));
-const express_1 = __importDefault(__nccwpck_require__(270));
 const core = __importStar(__nccwpck_require__(186));
+const express = __nccwpck_require__(270);
 const startServer = (port = 8080) => {
-    const app = (0, express_1.default)();
+    const app = express();
     const server = http_1.default.createServer(app);
     app.post('/close/', (req, res) => {
         server.close();
