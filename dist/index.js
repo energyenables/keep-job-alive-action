@@ -31318,7 +31318,9 @@ const startServer = (port) => {
     const app = (0, express_1.default)();
     const server = http_1.default.createServer(app);
     app.post('/close/', (req, res) => {
+        console.log('Kill signal received. Closing server...');
         server.close();
+        console.log('Server closed.');
         res.end('Closed');
     });
     console.log('Awaiting a kill signal on port 8080...');

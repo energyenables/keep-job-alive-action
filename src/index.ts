@@ -10,7 +10,9 @@ const startServer = (port: number) => {
   const server = http.createServer(app);
 
   app.post('/close/', (req, res) => {
+    console.log('Kill signal received. Closing server...');
     server.close();
+    console.log('Server closed.');
     res.end('Closed');
   });
 
