@@ -2,7 +2,9 @@ import http from 'http';
 import express from 'express';
 import * as core from '@actions/core';
 
-const startServer = (port: number = 8080) => {
+const DEFAULT_PORT = 8080;
+
+const startServer = (port: number) => {
   const app = express();
   const server = http.createServer(app);
 
@@ -24,7 +26,7 @@ const run = () => {
   const host = core.getInput('host', { required: true });
   const port = core.getInput('port', { required: false });
 
-  if (mode === 'wait') startServer(parseInt(port, 10));
+  if (mode === 'wait') startServer(port ? parseInt(port, 10) : DEFAULT_PORT);
   if (mode === 'kill') stopServer(host);
 };
 

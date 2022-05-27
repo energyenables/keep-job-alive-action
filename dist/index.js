@@ -25421,7 +25421,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const http_1 = __importDefault(__nccwpck_require__(3685));
 const express_1 = __importDefault(__nccwpck_require__(1204));
 const core = __importStar(__nccwpck_require__(2186));
-const startServer = (port = 8080) => {
+const DEFAULT_PORT = 8080;
+const startServer = (port) => {
     const app = (0, express_1.default)();
     const server = http_1.default.createServer(app);
     app.post('/close/', (req, res) => {
@@ -25439,7 +25440,7 @@ const run = () => {
     const host = core.getInput('host', { required: true });
     const port = core.getInput('port', { required: false });
     if (mode === 'wait')
-        startServer(parseInt(port, 10));
+        startServer(port ? parseInt(port, 10) : DEFAULT_PORT);
     if (mode === 'kill')
         stopServer(host);
 };
